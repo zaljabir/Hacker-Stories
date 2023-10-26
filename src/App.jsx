@@ -17,6 +17,22 @@ const list = [
     points: 5,
     objectID: 1,
   },
+  {
+    title: 'Firebase',
+    url: 'https://firebase.google.com/',
+    author: 'James Tamplin, Andrew Lee',
+    num_comments: 4,
+    points: 2,
+    objectID: 2,
+  },
+  {
+    title: 'Vue',
+    url: 'https://vuejs.org/',
+    author: 'Evan You',
+    num_comments: 0,
+    points: 1,
+    objectID: 3,
+  },
 ];
 
 function App() {
@@ -24,23 +40,39 @@ function App() {
     <div>
       <h1>My Hacker Stories</h1>
 
-      <label htmlFor="search">Search: </label>
-      <input id="search" type="text" />
+      <Search />
 
       <hr />
 
+      <List />
+    </div>
+  );
+}
+
+function List() {
+  return (
       <ul>
         {list.map(function (item) {
-          return <li key={item.objectID}>
-            <span>
-              <a href={item.url}> {item.title} </a>
-            </span>  
-            <span> {item.author} </span>
-            <span> {item.num_comments} </span>
-            <span> {item.points} </span>
+          return (
+            <li key={item.objectID}>
+              <span>
+                <a href={item.url}> {item.title} </a>
+              </span>  
+              <span> {item.author} </span>
+              <span> {item.num_comments} </span>
+              <span> {item.points} </span>
             </li>
+          );
         })}
       </ul>
+  );
+}
+
+function Search() {
+  return (
+    <div>
+      <label htmlFor="search">Search: </label>
+      <input id="search" type="text" />
     </div>
   );
 }
