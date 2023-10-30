@@ -36,6 +36,7 @@ const App = () => {
       objectID: 3,
     },
   ];
+  console.log("App Renders");
   
   return (
     <div>
@@ -50,28 +51,36 @@ const App = () => {
   );
 }
 
-const List = (props) => (
+const List = (props) => {
+  console.log("List Renders");
+  return (
       <ul>
         {props.list.map((item) => (
             <Item key={item.objectID} item={item}/>
           ))}
       </ul>
-);
+  );
+} 
 
-const Item = (props) => (
-  <li>
-    <span>
-      <a href={props.item.url}> {props.item.title} </a>
-    </span>  
-    <span> {props.item.author} </span>
-    <span> {props.item.num_comments} </span>
-    <span> {props.item.points} </span>
-  </li>
-);
+const Item = (props) => {
+  console.log("Item Renders");
+  
+  return (
+    <li>
+      <span>
+        <a href={props.item.url}> {props.item.title} </a>
+      </span>  
+      <span> {props.item.author} </span>
+      <span> {props.item.num_comments} </span>
+      <span> {props.item.points} </span>
+    </li>
+  );
+}
 
 const Search = () => {
+  const [searchTerm, setSearchTerm] = React.useState('');
   const handleChange = (event) => {
-    console.log(event);
+    setSearchTerm(event.target.value);
     console.log(event.target.value);
   }
 
@@ -79,10 +88,15 @@ const Search = () => {
     console.log(event);
     console.log(event.target.value);
   }
+  console.log("Search Renders");
   return (
     <div>
       <label htmlFor="search">Search: </label>
       <input id="search" type="text" onChange={handleChange} onBlur={handleBlur} />
+
+      <p>
+        Searching for <strong>{searchTerm}</strong>
+      </p>
     </div>
   );
 } 
