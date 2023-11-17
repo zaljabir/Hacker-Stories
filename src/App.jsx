@@ -2,7 +2,7 @@ import * as React from "react";
 
 const useStorageState = (key, initalState) => {
   const [value, setValue] = React.useState(
-    localStorage.getItem(key) || initalState
+    localStorage.getItem(key) ?? initalState
   );
 
   React.useEffect(() => {
@@ -91,10 +91,10 @@ const Item = ({ title, url, author, num_comments, points }) => (
 );
 
 const Search = ({search, onSearch}) => (
-    <div>
+    <>
       <label htmlFor="search">Search: </label>
       <input id="search" type="text" value={search} onChange={onSearch} />
-    </div>
+    </>
 );
 
 export default App;
